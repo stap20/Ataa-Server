@@ -10,7 +10,12 @@ const config = require("./config");
 const jwt = require("jsonwebtoken");
 const { Guard } = require("@utils");
 const { UserServices } = require("@services");
-const { userRoutes, categoryRoutes, donationRoutes } = require("@routes");
+const {
+  userRoutes,
+  categoryRoutes,
+  donationRoutes,
+  messagesRoutes,
+} = require("@routes");
 
 const app = express();
 const corsConfig = {
@@ -107,11 +112,15 @@ app.get("/download/*", (req, res) => {
   });
 });
 
+app.get("/", (req, res) => {
+  res.send("Server Working");
+});
+
 app.use(Guard);
 app.use("/user", userRoutes);
 app.use("/category", categoryRoutes);
 app.use("/donation", donationRoutes);
-
+app.use("/message", messagesRoutes);
 app.post("/logout", (req, res) => {
   try {
     return res.send({ success: true, message: "Logout successful" });
@@ -119,10 +128,6 @@ app.post("/logout", (req, res) => {
     console.error("Error:", error);
     return res.send({ success: false, message: "Logout failed" });
   }
-});
-
-app.get("/", (req, res) => {
-  res.send("Server Working");
 });
 
 // Start the server

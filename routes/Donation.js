@@ -62,8 +62,12 @@ router.post("/getAllDonations", (req, res) => {
 });
 
 router.post("/getPendingDonations", (req, res) => {
-  const user = { id: "65cdc3bdc683a9fcd8ba8221", role: "moderator" };
-  if (user.role === "moderator") {
+  const user = {
+    id: req.user.userId,
+    role: req.user.userRole,
+  };
+  
+  if (user.role !== "user") {
     DonationServices.getPendingDonations().then((result) => {
       res.send(result);
     });

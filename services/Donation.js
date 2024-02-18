@@ -93,6 +93,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1, // Sort by date field in descending order (-1)
+          },
+        },
       ];
 
       const donations = await Donation.aggregate(pipeline);
@@ -262,6 +267,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1 // Sort by date field in descending order (-1)
+          }
+        }
       ];
 
       const donations = await Donation.aggregate(pipeline);
@@ -325,6 +335,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1 // Sort by date field in descending order (-1)
+          }
+        }
       ];
 
       const donations = await Donation.aggregate(pipeline);
@@ -387,6 +402,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1 // Sort by date field in descending order (-1)
+          }
+        }
       ];
 
       const donations = await Donation.aggregate(pipeline);
@@ -450,6 +470,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1 // Sort by date field in descending order (-1)
+          }
+        }
       ];
 
       const donations = await Donation.aggregate(pipeline);
@@ -512,6 +537,11 @@ const DonationServices = {
             donationNumber: 1,
           },
         },
+        {
+          $sort: {
+            date: -1 // Sort by date field in descending order (-1)
+          }
+        }
       ];
 
       const donations = await Donation.aggregate(pipeline);
