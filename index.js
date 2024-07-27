@@ -12,9 +12,12 @@ const { Guard } = require("@utils");
 const { UserServices } = require("@services");
 const {
   userRoutes,
-  categoryRoutes,
-  donationRoutes,
-  messagesRoutes,
+  ElectronicBoardRoutes,
+  LfaRoutes,
+  FeederRoutes,
+  MachineTypeRoutes,
+  MachineProfileRoutes,
+  MachineRoutes
 } = require("@routes");
 
 const app = express();
@@ -52,6 +55,15 @@ mongoose
     console.error("MongoDB Connection Error: ", err);
   });
 
+app.use("/user", userRoutes);
+app.use("/electronic_board", ElectronicBoardRoutes);
+app.use("/feeder", FeederRoutes);
+app.use("/lfa", LfaRoutes);
+app.use("/machine_type", MachineTypeRoutes);
+app.use("/machine_profile", MachineProfileRoutes);
+app.use("/machine", MachineRoutes);
+
+
 app.post("/login", async (req, res) => {
   try {
     const { phoneNumber, countryCode, password } = req.body;
@@ -84,43 +96,12 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.post("/signup", (req, res) => {
-  const data = {
-    name: req.body.name,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email,
-    password: req.body.password,
-    countryCode: req.body.countryCode,
-  };
-
-  UserServices.create(data).then((result) => {
-    res.send(result);
-  });
-});
-
-app.get("/download/*", (req, res) => {
-  var filePath = req.params[0];
-  filePath = filePath.replace(/(\.\w+)$/, "_comp$1");
-
-  res.download(`./${filePath}`, (err) => {
-    if (err) {
-      console.log("Error in download: ", err);
-      return res.status(500).send("Error downloading image");
-    } else {
-      console.log("image downloaded successfully");
-    }
-  });
-});
-
 app.get("/", (req, res) => {
   res.send("Server Working");
 });
 
-app.use(Guard);
-app.use("/user", userRoutes);
-app.use("/category", categoryRoutes);
-app.use("/donation", donationRoutes);
-app.use("/message", messagesRoutes);
+// app.use(Guard);
+
 app.post("/logout", (req, res) => {
   try {
     return res.send({ success: true, message: "Logout successful" });

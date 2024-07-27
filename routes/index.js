@@ -1,6 +1,19 @@
 const userRoutes = require("./User");
-const categoryRoutes = require("./Category");
-const donationRoutes = require("./Donation");
-const messagesRoutes = require("./Message");
+const ElectronicBoardRoutes = require("./ElectronicBoard");
+const LfaRoutes = require("./Lfa");
+const FeederRoutes = require("./Feeder");
+const MachineRoutes = require("./Machine");
+const MachineTypeRoutes = require("./MachineType");
+const OrderRoutes = require("./Order");
+const MachineProfileRoutes = require("./MachineProfile");
 
-module.exports = { userRoutes, categoryRoutes, donationRoutes, messagesRoutes };
+module.exports = {
+  userRoutes,
+  ElectronicBoardRoutes,
+  LfaRoutes,
+  FeederRoutes,
+  MachineRoutes,
+  MachineTypeRoutes,
+  OrderRoutes,
+  MachineProfileRoutes,
+};

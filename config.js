@@ -1,4 +1,4 @@
 module.exports = {
   dbConnection:
-    "mongodb+srv://ryzntx:khaled101198@cluster0.epuh8pj.mongodb.net/ataa_db?retryWrites=true&w=majority",
+    "mongodb://127.0.0.1:27017/TextileLogs",
 };
