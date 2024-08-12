@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > /tmp/private_key
           chmod 600 /tmp/private_key
-          ssh -i /tmp/private_key -o StrictHostKeyChecking=no root@vps.ryzentx.com "cd ~/htdocs/ataa.ryzentx.com/Ataa-Server && git pull origin v1 && pm2 restart ataa-server"
+          ssh -i /tmp/private_key -o StrictHostKeyChecking=no root@ssh.ryzentx.com "cd ~/htdocs/ataa.ryzentx.com/Ataa-Server && git pull origin v1 && pm2 restart ataa-server"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SERVER_HOST: vps.ryzentx.com
+          SERVER_HOST: ssh.ryzentx.com
